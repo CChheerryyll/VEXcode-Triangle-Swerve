@@ -11,6 +11,18 @@
 class Software {
     public:
 
+    char currentkey = 't';
+    Interface testInterface = Interface('t');
+    Interface menuInterface = Interface('m');
+    Interface basicInterface = Interface('b');
+
+    Clickable menuOpenButton = Clickable(0,40,100,140,'o');
+    Clickable testButton = Clickable(0,240,40,160,'n');
+    Clickable basicButton = Clickable(240,480,40,160,'n');
+    Clickable nonkinematicsButton = Clickable();
+    Clickable kinematicsButton = Clickable();
+    int lastX = -1, lastY = -1;
+
     /**
      * @brief creates a new software system which 
      *  manipuates multiple interfaces
@@ -23,6 +35,8 @@ class Software {
     void initialize();
 
     void refresh();
+
+    char getKey();
 
 };
 

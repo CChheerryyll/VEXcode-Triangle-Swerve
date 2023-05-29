@@ -20,6 +20,10 @@ class Interface {
     Interface(char k);
 
     void drawTestInterface();
+
+    void drawMenuInterface();
+
+    void drawBasicInterface();
     
     /**
      * @brief draw interface only

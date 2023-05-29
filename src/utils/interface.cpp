@@ -16,12 +16,12 @@ Clickable redMod = Clickable(60,140,10,90,'r');
 Clickable greenMod = Clickable(170,250,90,170,'g');
 Clickable blueMod = Clickable(60,140,150,230,'b');
 
-Clickable angleRight = Clickable(430,460,95,125,'a');
-Clickable angleLeft = Clickable(320,350,95,125,'c');
-Clickable angleStop = Clickable(360,390,95,125,'e');
-Clickable driveRight = Clickable(430,460,195,225,'x');
-Clickable driveLeft = Clickable(320,350,195,225,'y');
-Clickable driveStop = Clickable(360,390,195,225,'z');
+Clickable angleRight = Clickable(430,460,95,125,'n');
+Clickable angleLeft = Clickable(320,350,95,125,'n');
+Clickable angleStop = Clickable(360,390,95,125,'n');
+Clickable driveRight = Clickable(430,460,195,225,'n');
+Clickable driveLeft = Clickable(320,350,195,225,'n');
+Clickable driveStop = Clickable(360,390,195,225,'n');
 
 Interface::Interface() {
     
@@ -45,6 +45,24 @@ void Interface::drawTestInterface() {
     Brain.Screen.drawCircle(100,190,40,deepcyan);
     Brain.Screen.drawCircle(100,190,20,lightcyan);
     drawTriangleRight(10, 100, 20, lighterblue);
+}
+
+void Interface::drawMenuInterface() {
+    Brain.Screen.drawRectangle(0,0,480,240,black);
+    Brain.Screen.printAt(10,25,"MENU");
+    Brain.Screen.drawRectangle(0,40,480,50,black);
+    Brain.Screen.drawRectangle(0,40,240,120,black);
+    Brain.Screen.drawRectangle(240,40,240,120,black);
+    Brain.Screen.drawRectangle(0,150,240,120,black);
+    Brain.Screen.drawRectangle(240,150,240,120,black);
+    Brain.Screen.printAt(10,70,"Test Mode");
+    Brain.Screen.printAt(10,120,"Basic Controls");
+    Brain.Screen.printAt(10,170,"Nonkinematics");
+    Brain.Screen.printAt(10,220,"Kinematics");
+}
+
+void Interface::drawBasicInterface() {
+    Brain.Screen.drawRectangle(0,0,480,240,black);
 }
 
 void Interface::refreshInterface() {
@@ -101,6 +119,12 @@ void Interface::refreshInterface() {
             drawTriangleLeft(320,95,15,white);
             drawTriangleLeft(320,195,15,white);
         }
+    }
+    else if (key == 'm') {
+        drawMenuInterface();
+    }
+    else if (key == 'b') {
+        drawBasicInterface();
     }
 }
 

@@ -14,10 +14,11 @@ motor AngleG = motor(PORT7, ratio18_1, false);
 motor DriveR = motor(PORT6, ratio18_1, false);
 motor AngleR = motor(PORT5, ratio18_1, false);
 motor DriveB = motor(PORT4, ratio18_1, false);
+controller Controller1 = controller(primary);
 
 // VEXcode generated functions
-
-
+// define variable for remote controller enable/disable
+bool RemoteControlCodeEnabled = true;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.

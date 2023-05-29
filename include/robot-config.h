@@ -9,6 +9,7 @@ extern motor AngleG;
 extern motor DriveR;
 extern motor AngleR;
 extern motor DriveB;
+extern controller Controller1;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.
