@@ -49,20 +49,28 @@ void Interface::drawTestInterface() {
 
 void Interface::drawMenuInterface() {
     Brain.Screen.drawRectangle(0,0,480,240,black);
-    Brain.Screen.printAt(10,25,"MENU");
-    Brain.Screen.drawRectangle(0,40,480,50,black);
-    Brain.Screen.drawRectangle(0,40,240,120,black);
-    Brain.Screen.drawRectangle(240,40,240,120,black);
-    Brain.Screen.drawRectangle(0,150,240,120,black);
-    Brain.Screen.drawRectangle(240,150,240,120,black);
-    Brain.Screen.printAt(10,70,"Test Mode");
-    Brain.Screen.printAt(10,120,"Basic Controls");
-    Brain.Screen.printAt(10,170,"Nonkinematics");
-    Brain.Screen.printAt(10,220,"Kinematics");
+    Brain.Screen.printAt(50,25,"MENU");
+    Brain.Screen.drawRectangle(0,0,40,240,lightblue);
+    drawTriangleRight(10, 100, 20, lighterblue);
+    Brain.Screen.drawRectangle(40,40,220,100,black);
+    Brain.Screen.drawRectangle(40,140,220,100,black);
+    Brain.Screen.drawRectangle(260,40,220,100,black);
+    Brain.Screen.printAt(50,70,"Test Mode");
+    Brain.Screen.printAt(270,70,"Basic Controls");
+    //Brain.Screen.printAt(10,170,"Nonkinematics");
+    //Brain.Screen.printAt(10,220,"Kinematics");
 }
 
 void Interface::drawBasicInterface() {
     Brain.Screen.drawRectangle(0,0,480,240,black);
+    Brain.Screen.drawRectangle(0,0,40,240,lightblue);
+    drawTriangleRight(10, 100, 20, lighterblue);
+    //Brain.Screen.drawRectangle(40,0,480,80,black);
+    Brain.Screen.drawRectangle(186,0,146,240,black);
+    //Brain.Screen.drawRectangle(40,160,480,80,black);
+    Brain.Screen.printAt(50,25,"RED MODULE");
+    Brain.Screen.printAt(196,25,"GREEN MODULE");
+    Brain.Screen.printAt(340,25,"BLUE MODULE");
 }
 
 void Interface::refreshInterface() {
@@ -78,8 +86,10 @@ void Interface::refreshInterface() {
             Brain.Screen.printAt(290,20,"RED MODULE");
             Brain.Screen.printAt(290,60,"angle: port 5");
             Brain.Screen.printAt(290,160,"drive: port 6");
-            Brain.Screen.printAt(290,80,"rpm: %d", AngleR.velocity(rpm));
-            Brain.Screen.printAt(290,180,"rpm: %d", DriveR.velocity(rpm));
+            float arpm = AngleR.velocity(rpm);
+            float drpm = DriveR.velocity(rpm);
+            Brain.Screen.printAt(290,80,"rpm: %d", arpm);
+            Brain.Screen.printAt(290,180,"rpm: %d", drpm);
             Brain.Screen.drawRectangle(360, 95, 30, 30, white);
             Brain.Screen.drawRectangle(360, 195, 30, 30, white);
             drawTriangleRight(430, 95, 15, white);
@@ -94,8 +104,10 @@ void Interface::refreshInterface() {
             Brain.Screen.printAt(290,20,"GREEN MODULE");
             Brain.Screen.printAt(290,60,"angle: port 7");
             Brain.Screen.printAt(290,160,"drive: port 20");
-            Brain.Screen.printAt(290,80,"rpm: %d", AngleG.velocity(rpm));
-            Brain.Screen.printAt(290,180,"rpm: %d", DriveG.velocity(rpm));
+            float arpm = AngleG.velocity(rpm);
+            float drpm = DriveG.velocity(rpm);
+            Brain.Screen.printAt(290,80,"rpm: %d", arpm);
+            Brain.Screen.printAt(290,180,"rpm: %d", drpm);
             Brain.Screen.drawRectangle(360, 95, 30, 30, white);
             Brain.Screen.drawRectangle(360, 195, 30, 30, white);
             drawTriangleRight(430, 95, 15, white);
@@ -110,8 +122,10 @@ void Interface::refreshInterface() {
             Brain.Screen.printAt(290,20,"BLUE MODULE");
             Brain.Screen.printAt(290,60,"angle: port 19");
             Brain.Screen.printAt(290,160,"drive: port 4");
-            Brain.Screen.printAt(290,80,"rpm: %d", AngleB.velocity(rpm));
-            Brain.Screen.printAt(290,180,"rpm: %d", DriveB.velocity(rpm));
+            float arpm = AngleB.velocity(rpm);
+            float drpm = DriveB.velocity(rpm);
+            Brain.Screen.printAt(290,80,"rpm: %d", arpm);
+            Brain.Screen.printAt(290,180,"rpm: %d", drpm);
             Brain.Screen.drawRectangle(360, 95, 30, 30, white);
             Brain.Screen.drawRectangle(360, 195, 30, 30, white);
             drawTriangleRight(430, 95, 15, white);

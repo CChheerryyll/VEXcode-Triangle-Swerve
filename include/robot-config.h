@@ -10,6 +10,9 @@ extern motor DriveR;
 extern motor AngleR;
 extern motor DriveB;
 extern controller Controller1;
+extern line LineR;
+extern line LineG;
+extern line LineB;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.

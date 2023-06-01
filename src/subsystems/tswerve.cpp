@@ -1,7 +1,7 @@
 #include "tswerve.h"
 
 Tswerve::Tswerve() {
-
+   
 }
 
 Tswerve::Tswerve(Module r, Module g, Module b) {
@@ -59,6 +59,11 @@ void Tswerve::basicDrive() {
     else {
         ModB.getDriveMotor().spin(fwd,driveAX*driverev,volt);
     }
+
+    //calibration button
+    if (Controller1.ButtonDown.pressing()) {
+        calibrateModuleAngle();
+    }
     
     //B (reset button, enable pid)
     if (Controller1.ButtonB.pressing()) {
@@ -91,4 +96,10 @@ void Tswerve::basicDrive() {
             ModB.getAngleMotor().spin(fwd,angleAX*angleccw,volt);
         }
     }
+}
+
+void Tswerve::calibrateModuleAngle() {
+    ModR.calibrateAngle(LineR);
+    ModG.calibrateAngle(LineG);
+    ModB.calibrateAngle(LineB);
 }

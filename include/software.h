@@ -16,8 +16,8 @@ class Software {
     Interface menuInterface = Interface('m');
     Interface basicInterface = Interface('b');
 
-    Clickable menuOpenButton = Clickable(0,40,100,140,'o');
-    Clickable testButton = Clickable(0,240,40,160,'n');
+    Clickable menuOpenButton = Clickable(0,40,100,140,'n');
+    Clickable testButton = Clickable(40,240,40,160,'n');
     Clickable basicButton = Clickable(240,480,40,160,'n');
     Clickable nonkinematicsButton = Clickable();
     Clickable kinematicsButton = Clickable();

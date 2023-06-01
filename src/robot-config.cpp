@@ -9,12 +9,15 @@ brain  Brain;
 
 // VEXcode device constructors
 motor DriveG = motor(PORT20, ratio18_1, false);
-motor AngleB = motor(PORT19, ratio18_1, false);
-motor AngleG = motor(PORT7, ratio18_1, false);
+motor AngleB = motor(PORT19, ratio18_1, true);
+motor AngleG = motor(PORT7, ratio18_1, true);
 motor DriveR = motor(PORT6, ratio18_1, false);
-motor AngleR = motor(PORT5, ratio18_1, false);
+motor AngleR = motor(PORT5, ratio18_1, true);
 motor DriveB = motor(PORT4, ratio18_1, false);
 controller Controller1 = controller(primary);
+line LineR = line(Brain.ThreeWirePort.A);
+line LineG = line(Brain.ThreeWirePort.B);
+line LineB = line(Brain.ThreeWirePort.C);
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable

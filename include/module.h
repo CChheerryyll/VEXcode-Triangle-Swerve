@@ -1,20 +1,41 @@
-#include "vex.h"
-
 #ifndef MODULE_H
 #define MODULE_H
+
+#include "vex.h"
 
 class Module {
     public:
 
-    motor driveMotor = motor(-1), angleMotor = motor(-1);
+    motor DriveMotor = motor(-1), AngleMotor = motor(-1);
+    double offset;
+    double absAngle;
+    int darkRef = -1; //dark zone reflectivity
 
     Module();
-
-    Module(motor am, motor dm);
+    
+    /**
+     * @brief create a swerve module
+     * @am angle motor
+     * @dm drive motor
+     * @offset dark zone abs angle 
+     */
+    Module(motor am, motor dm, double offset);
 
     motor getAngleMotor();
 
     motor getDriveMotor();
+    
+    /**
+     * @brief align every module with the sensor
+     * and set the reflectivity of the dark zone
+     */
+    void calibrateAngle(line lt);
+
+    /**
+     * @brief get the current absolute angle of
+     * the module on a range of 360 degrees cw 
+     */
+    void absoluteAngle(line lt);
 };
 
 #endif

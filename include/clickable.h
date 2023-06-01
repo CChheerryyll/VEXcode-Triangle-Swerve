@@ -1,7 +1,7 @@
-#include "vex.h"
-
 #ifndef CLICKABLE_H
 #define CLICKABLE_H
+
+#include "vex.h"
 
 class Clickable {
     public:
