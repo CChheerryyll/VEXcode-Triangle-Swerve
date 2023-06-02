@@ -5,7 +5,7 @@ Module::Module() {
   
 }
 
-Module::Module(motor am, motor dm, double o) {
+Module::Module(motor am, motor dm, float o) {
     AngleMotor = am;
     DriveMotor = dm;
     offset = o;
@@ -21,7 +21,6 @@ motor Module::getDriveMotor() {
 
 void Module::calibrateAngle(line lt) {
     darkRef = -1;
-    AngleMotor.resetRotation();
     int initRef = lt.reflectivity();
     //spin module for one rotation
     while (AngleMotor.rotation(deg)*ANGLE_RATIO <= 360) {
@@ -38,9 +37,16 @@ void Module::calibrateAngle(line lt) {
         }
     }
     AngleMotor.stop();
+
     if (darkRef > -1) {
         //print calibration success
         //printf("success\n");
+        AngleMotor.setRotation(offset/ANGLE_RATIO, deg);
+        while (AngleMotor.rotation(deg)/ANGLE_RATIO > 0) {
+            AngleMotor.spin(fwd,-4.0,volt);
+        }
+        AngleMotor.stop();
+        AngleMotor.resetRotation();
     }
     else {
         //print calibration failed
@@ -48,5 +54,18 @@ void Module::calibrateAngle(line lt) {
 }
 
 void Module::absoluteAngle(line lt) {
-    
+    if (lt.reflectivity() < darkRef+5 && lt.reflectivity() > darkRef-5) {
+        absAngle = offset;
+        AngleMotor.setRotation(absAngle,deg);
+        printf("recalibrated\n");
+    }
+    else {
+        absAngle = AngleMotor.rotation(deg)*ANGLE_RATIO;
+        while (absAngle < 0) {
+            absAngle += 360;
+        }
+        while (absAngle >= 360) {
+            absAngle -= 360;
+        }
+    }
 }

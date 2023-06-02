@@ -43,3 +43,5 @@ class Software {
 #endif
 
 using namespace vex;
+
+extern Software tSwerve;

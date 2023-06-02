@@ -8,12 +8,21 @@ Tswerve::Tswerve(Module r, Module g, Module b) {
     ModR = r;
     ModG = g;
     ModB = b;
+    mods[0] = ModR;
+    mods[1] = ModG;
+    mods[2] = ModB;
+}
+
+void Tswerve::runSwerve() {
+    ModR.absoluteAngle(LineR);
+    ModG.absoluteAngle(LineG);
+    ModB.absoluteAngle(LineB);
 }
 
 void Tswerve::basicDrive() {
     //determine volt from joystick values
-    double angleAX = Controller1.Axis1.position()/100.0; //AX = axis
-    double driveAX = Controller1.Axis3.position()/100.0;
+    float angleAX = Controller1.Axis1.position()/100.0; //AX = axis
+    float driveAX = Controller1.Axis3.position()/100.0;
 
     if (angleAX <= DEADBAND) {
       angleAX = 0.0;

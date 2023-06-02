@@ -1,7 +1,7 @@
-const double DEADBAND = 0.15;
-const double MAXVOLT = 12.0;
-const double RANGE = 15; //reflectivity difference
-const double OFFSET_R = 205;
-const double OFFSET_G = 320;
-const double OFFSET_B = 80;
-const double ANGLE_RATIO = 0.25;
+const float DEADBAND = 0.15;
+const float MAXVOLT = 12.0;
+const float RANGE = 15; //reflectivity difference
+const float OFFSET_R = 205;
+const float OFFSET_G = 320;
+const float OFFSET_B = 80;
+const float ANGLE_RATIO = 0.25;

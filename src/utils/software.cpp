@@ -1,5 +1,6 @@
 #include "software.h"
 #include "constants.h"
+#include "module.h"
 
 Software::Software() {
     initialize();
@@ -38,12 +39,17 @@ void Software::refresh() {
     }
 
     if (currentkey == 'b') {
-        float angleR = AngleR.rotation(deg)*ANGLE_RATIO;
+        /*float angleR = AngleR.rotation(deg)*ANGLE_RATIO;
         Brain.Screen.printAt(50,45,"%f",angleR);
         float angleG = AngleG.rotation(deg)*ANGLE_RATIO;
         Brain.Screen.printAt(196,45,"%f",angleG);
         float angleB = AngleB.rotation(deg)*ANGLE_RATIO;
-        Brain.Screen.printAt(340,45,"%f",angleB);
+        Brain.Screen.printAt(340,45,"%f",angleB);*/
+
+        Brain.Screen.printAt(50,45,"%f",ModR.absAngle);
+        Brain.Screen.printAt(196,45,"%f",ModG.absAngle);
+        Brain.Screen.printAt(340,45,"%f",ModB.absAngle);
+        //printf("%f\n",ModR.absAngle);
     }
 
     lastX = x1;

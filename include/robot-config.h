@@ -13,6 +13,7 @@ extern controller Controller1;
 extern line LineR;
 extern line LineG;
 extern line LineB;
+extern inertial Inertial;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.

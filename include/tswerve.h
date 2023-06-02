@@ -8,10 +8,16 @@ class Tswerve {
     public:
 
     Module ModR, ModG, ModB;
+    Module mods[3];
 
     Tswerve();
     
     Tswerve(Module r, Module g, Module b);
+
+    /**
+     * @brief collect any necessary data 
+     */
+    void runSwerve();
 
     void basicDrive();
     
@@ -22,3 +28,5 @@ class Tswerve {
 };
 
 #endif
+
+extern Tswerve Drivetrain;
