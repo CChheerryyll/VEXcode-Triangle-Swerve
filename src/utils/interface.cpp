@@ -57,8 +57,8 @@ void Interface::drawMenuInterface() {
     Brain.Screen.drawRectangle(260,40,220,100,black);
     Brain.Screen.printAt(50,70,"Test Mode");
     Brain.Screen.printAt(270,70,"Basic Controls");
-    //Brain.Screen.printAt(10,170,"Nonkinematics");
-    //Brain.Screen.printAt(10,220,"Kinematics");
+    Brain.Screen.printAt(50,170,"Nonkinematics");
+    //Brain.Screen.printAt(270,170,"Kinematics");
 }
 
 void Interface::drawBasicInterface() {
@@ -71,6 +71,12 @@ void Interface::drawBasicInterface() {
     Brain.Screen.printAt(50,25,"RED MODULE");
     Brain.Screen.printAt(196,25,"GREEN MODULE");
     Brain.Screen.printAt(340,25,"BLUE MODULE");
+}
+
+void Interface::drawNkInterface() {
+    Brain.Screen.drawRectangle(0,0,480,240,black);
+    Brain.Screen.drawRectangle(0,0,40,240,lightblue);
+    drawTriangleRight(10, 100, 20, lighterblue);
 }
 
 void Interface::refreshInterface() {
@@ -139,6 +145,9 @@ void Interface::refreshInterface() {
     }
     else if (key == 'b') {
         drawBasicInterface();
+    }
+    else if (key == 'n') {
+        drawNkInterface();
     }
 }
 

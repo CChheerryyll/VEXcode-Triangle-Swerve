@@ -24,6 +24,8 @@ class Interface {
     void drawMenuInterface();
 
     void drawBasicInterface();
+
+    void drawNkInterface();
     
     /**
      * @brief draw interface only

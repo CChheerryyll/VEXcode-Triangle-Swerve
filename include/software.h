@@ -11,15 +11,16 @@
 class Software {
     public:
 
-    char currentkey = 't';
+    char currentkey = 'n';
     Interface testInterface = Interface('t');
     Interface menuInterface = Interface('m');
     Interface basicInterface = Interface('b');
+    Interface nonkInterface = Interface('n');
 
     Clickable menuOpenButton = Clickable(0,40,100,140,'n');
     Clickable testButton = Clickable(40,240,40,160,'n');
     Clickable basicButton = Clickable(240,480,40,160,'n');
-    Clickable nonkinematicsButton = Clickable();
+    Clickable nonkButton = Clickable(40,240,160,240,'n');
     Clickable kinematicsButton = Clickable();
     int lastX = -1, lastY = -1;
 

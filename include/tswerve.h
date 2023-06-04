@@ -9,22 +9,22 @@ class Tswerve {
 
     Module ModR, ModG, ModB;
     Module mods[3];
+    float targetHd = 0;
 
     Tswerve();
     
     Tswerve(Module r, Module g, Module b);
 
-    /**
-     * @brief collect any necessary data 
-     */
-    void runSwerve();
-
     void basicDrive();
+
+    void nonKinematicsDrive();
     
     /**
-     * @brief every module will align its marker to the linetracker
+     * @brief every module will align itself to the front
      */
     void calibrateModuleAngle();
+
+    void targetHeading();
 };
 
 #endif

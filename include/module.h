@@ -9,6 +9,8 @@ class Module {
     motor DriveMotor = motor(-1), AngleMotor = motor(-1);
     float offset, absAngle;
     int darkRef = -1; //dark zone reflectivity
+    float error,lasterror;
+    int revdrive = 1;
 
     Module();
     
@@ -19,10 +21,6 @@ class Module {
      * @offset dark zone abs angle 
      */
     Module(motor am, motor dm, float offset);
-
-    motor getAngleMotor();
-
-    motor getDriveMotor();
     
     /**
      * @brief align every module to the front
@@ -36,6 +34,15 @@ class Module {
      */
     void absoluteAngle(line lt);
     
+    /**
+     * @brief code sponsored by chatGPT
+     * error means #of degrees the module must
+     * turn to reach target. 
+     * >0 means turning clockwise
+     * <0 means turning counterclockwide
+     */
+    void findError(float target);
+
 
 };
 

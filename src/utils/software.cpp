@@ -1,13 +1,12 @@
 #include "software.h"
-#include "constants.h"
-#include "module.h"
+#include "tswerve.h"
 
 Software::Software() {
     initialize();
 }
 
 void Software::initialize() {
-    //testInterface.drawTestInterface();
+    //menuInterface.drawMenuInterface();
 }
 
 void Software::refresh() {
@@ -31,25 +30,30 @@ void Software::refresh() {
           else if (basicButton.isClicked()) {
             currentkey = 'b';
           }
+          else if (nonkButton.isClicked()) {
+            currentkey = 'n';
+          }
       }
       else if (currentkey == 'b') {
           basicInterface.refreshInterface();
       }
+      else if (currentkey == 'n') {
+          nonkInterface.refreshInterface();
+      }
       
     }
 
+    //updating values to the brain
     if (currentkey == 'b') {
-        /*float angleR = AngleR.rotation(deg)*ANGLE_RATIO;
-        Brain.Screen.printAt(50,45,"%f",angleR);
-        float angleG = AngleG.rotation(deg)*ANGLE_RATIO;
-        Brain.Screen.printAt(196,45,"%f",angleG);
-        float angleB = AngleB.rotation(deg)*ANGLE_RATIO;
-        Brain.Screen.printAt(340,45,"%f",angleB);*/
-
         Brain.Screen.printAt(50,45,"%f",ModR.absAngle);
         Brain.Screen.printAt(196,45,"%f",ModG.absAngle);
         Brain.Screen.printAt(340,45,"%f",ModB.absAngle);
-        //printf("%f\n",ModR.absAngle);
+    }
+    else if (currentkey == 'n') {
+        Brain.Screen.printAt(60,20,"target: %f",Drivetrain.targetHd);
+        Brain.Screen.printAt(60,40,"abs: %f",ModR.absAngle);
+        Brain.Screen.printAt(60,60,"error: %f",ModR.error);
+        Brain.Screen.printAt(60,80,"%d",ModR.revdrive);
     }
 
     lastX = x1;

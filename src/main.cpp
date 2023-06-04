@@ -37,11 +37,18 @@ int main() {
       ModR.absoluteAngle(LineR);
       ModG.absoluteAngle(LineG);
       ModB.absoluteAngle(LineB);
+      Drivetrain.targetHeading();
+      ModR.findError(Drivetrain.targetHd);
+      ModG.findError(Drivetrain.targetHd);
+      ModB.findError(Drivetrain.targetHd);
 
       //refresh software
       tSwerve.refresh();
       if (tSwerve.getKey() == 'b') {
           Drivetrain.basicDrive();
+      }
+      else if (tSwerve.getKey() == 'n') {
+          Drivetrain.nonKinematicsDrive();
       }
   }
   

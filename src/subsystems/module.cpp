@@ -11,14 +11,6 @@ Module::Module(motor am, motor dm, float o) {
     offset = o;
 }
 
-motor Module::getAngleMotor() {
-    return AngleMotor;
-}
-
-motor Module::getDriveMotor() {
-    return DriveMotor;
-}
-
 void Module::calibrateAngle(line lt) {
     darkRef = -1;
     int initRef = lt.reflectivity();
@@ -26,7 +18,7 @@ void Module::calibrateAngle(line lt) {
     while (AngleMotor.rotation(deg)*ANGLE_RATIO <= 360) {
         //printf("%f\n",AngleMotor.rotation(deg)*ANGLE_RATIO);
 
-        AngleMotor.spin(fwd,8.0,volt);
+        AngleMotor.spin(fwd,4.0,volt);
         int currentRef = lt.reflectivity();
         //printf("init:%d,current:%d\n",initRef,currentRef);
         if (currentRef - RANGE > initRef) { //darker
@@ -41,12 +33,12 @@ void Module::calibrateAngle(line lt) {
     if (darkRef > -1) {
         //print calibration success
         //printf("success\n");
-        AngleMotor.setRotation(offset/ANGLE_RATIO, deg);
+        AngleMotor.setRotation(offset/0.75, deg);
         while (AngleMotor.rotation(deg)/ANGLE_RATIO > 0) {
             AngleMotor.spin(fwd,-4.0,volt);
         }
         AngleMotor.stop();
-        AngleMotor.resetRotation();
+        //AngleMotor.resetRotation();
     }
     else {
         //print calibration failed
@@ -69,3 +61,42 @@ void Module::absoluteAngle(line lt) {
         }
     }
 }
+
+void Module::findError(float target) {
+    double clockwise = fmod(target - absAngle + 360, 360);
+    double counterclockwise = fmod(absAngle - target + 360, 360);
+
+    if (clockwise <= counterclockwise) {
+        if (clockwise <= 180) {
+            error = -clockwise;
+        }
+        else {
+            error = 360 - clockwise;
+        }
+    }
+    else {
+        if (counterclockwise <= 180) {
+            error = counterclockwise;
+        }
+        else {
+            error = 360 - counterclockwise;
+        }
+    }
+
+    //optimization
+    /*if (error > 90) {
+        error = error - 180;
+        if (lasterror > 90) {
+            revdrive*=-1;
+        }
+    }
+    else if (error < -90) {
+        error = error + 180;
+        if (lasterror < -90) {
+            revdrive*=-1;
+        }
+    }
+
+    lasterror = error;*/
+}
+
