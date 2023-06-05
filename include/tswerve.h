@@ -7,13 +7,11 @@
 class Tswerve {
     public:
 
-    Module ModR, ModG, ModB;
-    Module mods[3];
+    //Module ModR, ModG, ModB;
+    //Module mods[3];
     float targetHd = 0;
 
     Tswerve();
-    
-    Tswerve(Module r, Module g, Module b);
 
     void basicDrive();
 
@@ -25,6 +23,7 @@ class Tswerve {
     void calibrateModuleAngle();
 
     void targetHeading();
+
 };
 
 #endif

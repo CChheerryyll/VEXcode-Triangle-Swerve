@@ -8,6 +8,7 @@ Module::Module() {
 Module::Module(motor am, motor dm, float o) {
     AngleMotor = am;
     DriveMotor = dm;
+    anglePID = PIDController(ANGLE_KP,ANGLE_KI,ANGLE_KD);
     offset = o;
 }
 
@@ -66,7 +67,10 @@ void Module::findError(float target) {
     double clockwise = fmod(target - absAngle + 360, 360);
     double counterclockwise = fmod(absAngle - target + 360, 360);
 
-    if (clockwise <= counterclockwise) {
+    if (fabs(clockwise) - fabs(counterclockwise) < 5) {
+        error = clockwise;
+    }
+    else if (clockwise <= counterclockwise) {
         if (clockwise <= 180) {
             error = -clockwise;
         }

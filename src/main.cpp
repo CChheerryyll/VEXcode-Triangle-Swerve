@@ -50,6 +50,7 @@ int main() {
       else if (tSwerve.getKey() == 'n') {
           Drivetrain.nonKinematicsDrive();
       }
+      wait(20,msec);
   }
   
 }

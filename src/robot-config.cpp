@@ -30,7 +30,7 @@ inertial Inertial = inertial(PORT1);
 Module ModR = Module(AngleR,DriveR,OFFSET_R);
 Module ModG = Module(AngleG,DriveG,OFFSET_G);
 Module ModB = Module(AngleB,DriveB,OFFSET_B);
-Tswerve Drivetrain = Tswerve(ModR,ModG,ModB);
+Tswerve Drivetrain = Tswerve();
 
 // VEXcode generated functions
 // define variable for remote controller enable/disable

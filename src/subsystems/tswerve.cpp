@@ -4,15 +4,6 @@ Tswerve::Tswerve() {
    
 }
 
-Tswerve::Tswerve(Module r, Module g, Module b) {
-    ModR = r;
-    ModG = g;
-    ModB = b;
-    mods[0] = ModR;
-    mods[1] = ModG;
-    mods[2] = ModB;
-}
-
 void Tswerve::basicDrive() {
     //determine volt from joystick values
     float angleAX = Controller1.Axis1.position()/100.0; //AX = axis
@@ -44,7 +35,7 @@ void Tswerve::basicDrive() {
         ModR.DriveMotor.spin(fwd,MAXVOLT/2*driverev,volt); //6.0
     }
     else {
-      ModR.DriveMotor.spin(fwd,driveAX*driverev,volt);
+        ModR.DriveMotor.spin(fwd,driveAX*driverev,volt);
     }
 
     //right
@@ -102,23 +93,15 @@ void Tswerve::basicDrive() {
 }
 
 void Tswerve::nonKinematicsDrive() {
-    //reverse motors if needed
-    int angleccw = 1;
-    
-    if (Controller1.ButtonR1.pressing()) {
-      angleccw = -1;
-    }
+  
     //calibration button
     if (Controller1.ButtonDown.pressing()) {
         calibrateModuleAngle();
     }
-    //X
-    if (Controller1.ButtonX.pressing()) {
-        ModR.AngleMotor.spin(fwd,MAXVOLT/2*angleccw,volt);
-    }
-    else {
-        ModR.AngleMotor.stop();
-    }
+
+    float vR = ModR.anglePID.update(ModR.error);
+    ModR.AngleMotor.spin(fwd,vR,volt);
+    
 }
 
 void Tswerve::calibrateModuleAngle() {
@@ -161,3 +144,4 @@ void Tswerve::targetHeading() {
         }
     }
 }
+

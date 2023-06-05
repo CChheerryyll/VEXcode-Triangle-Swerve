@@ -1,15 +1,17 @@
 #ifndef MODULE_H
 #define MODULE_H
 
-#include "vex.h"
+#include "pidController.h"
 
 class Module {
     public:
 
     motor DriveMotor = motor(-1), AngleMotor = motor(-1);
+    PIDController anglePID = PIDController();
+    PIDController drivePID = PIDController();
     float offset, absAngle;
     int darkRef = -1; //dark zone reflectivity
-    float error,lasterror;
+    float error;
     int revdrive = 1;
 
     Module();
