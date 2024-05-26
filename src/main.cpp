@@ -1,7 +1,7 @@
 /*----------------------------------------------------------------------------*/
 /*                                                                            */
 /*    Module:       main.cpp                                                  */
-/*    Author:       C:\Users\lijia                                            */
+/*    Author:       Cheryl                                            */
 /*    Created:      Sat May 27 2023                                           */
 /*    Description:  V5 project                                                */
 /*                                                                            */
